@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  web:
+    build:
+      context: ./docker-web-app
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+    restart: unless-stopped
+  api:
+    build:
+      context: ./docker-api
+      dockerfile: Dockerfile.prod
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+  db:
+    image: mongo:4.0.28-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - counts:/data/db
+    restart: unless-stopped
+
+volumes:
+  counts:
