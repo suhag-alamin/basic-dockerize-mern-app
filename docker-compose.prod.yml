@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   web:
+    image: suhag13/basic-dockerize-mern-app:web-1.0
     build:
       context: ./docker-web-app
       dockerfile: Dockerfile.prod
@@ -8,6 +9,7 @@ services:
       - 80:80
     restart: unless-stopped
   api:
+    image: suhag13/basic-dockerize-mern-app:api-1.0
     build:
       context: ./docker-api
       dockerfile: Dockerfile.prod
